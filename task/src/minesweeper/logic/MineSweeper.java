@@ -58,22 +58,18 @@ public class MineSweeper {
                 try {
                     if(".".equals(dispalyBoard[r][c])&&!mines.contains(new Mine(r,c))){
                         int count = count(r,c);
-                        //System.out.println(count);
                         if(count>0){
                             dispalyBoard[r][c]= String.valueOf(count);
                         }else{
                             dispalyBoard[r][c]="/";
                             checkSurroundings(r,c);
                         }
-                        //todo surrounding array here plus check * if have / neighbour
                     }else if("*".equals(dispalyBoard[r][c])&&!mines.contains(new Mine(r,c))){
-                        ///System.out.println("equals * "+r+" "+c+"  " +dispalyBoard[r][c]);
                         String[][] tempArray = surroundingArray(r,c, dispalyBoard);
                         for(String[] row: tempArray){
                             for (String s: row) {
                                 if("/".equals(s)){
                                     int count = count(r,c);
-                                    //System.out.println(count+"!!  "+r +"  "+c);
                                     dispalyBoard[r][c]=count>0?String.valueOf(count):"/";
                                     checkSurroundings(r,c);
                                     break;
